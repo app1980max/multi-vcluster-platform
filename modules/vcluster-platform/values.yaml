@@ -1,0 +1,7 @@
+admin:
+  username: admin
+  password: admin
+config:
+  audit:
+    enabled: true
+  loftHost: vcluster.appflex.io
