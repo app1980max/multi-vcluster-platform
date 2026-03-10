@@ -1,6 +1,6 @@
 admin:
-  username: root  
-  password: q1w2e3r4100@
+  username: admin
+  password: admin
 config:
   audit:
     enabled: true
