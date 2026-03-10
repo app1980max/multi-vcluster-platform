@@ -19,3 +19,4 @@ output "api_server_url" {
   description = "API server URL for kubectl/helm access"
   value       = "https://127.0.0.1:6443"
 }
+
