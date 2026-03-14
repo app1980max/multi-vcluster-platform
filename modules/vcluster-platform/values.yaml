@@ -1,3 +1,8 @@
+
+# -------------------------
+#    DEFAULT TEMPLATE
+# -------------------------
+
 admin:
   username: admin
   password: admin
@@ -8,3 +13,26 @@ config:
 ingress:
   enabled: true
   host: vcluster-dev.appflex.io
+
+features:
+  virtualClusters: true
+  projects: true
+  templates: true
+
+projects:
+  createDefault: true
+  
+virtualCluster:
+  enabled: true
+
+  defaults:
+    sync:
+      nodes:
+        enabled: true
+      services:
+        enabled: true
+      ingresses:
+        enabled: true
+
+
+        
