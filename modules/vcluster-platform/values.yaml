@@ -5,7 +5,6 @@ config:
   audit:
     enabled: true
   loftHost: vcluster-dev.appflex.io
-
 ingress:
   enabled: true
   host: vcluster-dev.appflex.io
