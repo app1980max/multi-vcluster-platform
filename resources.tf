@@ -54,4 +54,10 @@ module "vclusters" {
   name      = "vcluster-${each.key}"
   namespace = "vcluster-${each.key}"
 
+  loft_host     = "vcluster-dev.appflex.io"
+  loft_user     = "admin"
+  loft_password = "admin"
+  loft_project = "Default Project"
+  kubeconfig_path = "~/.kube/config"
+
 }
