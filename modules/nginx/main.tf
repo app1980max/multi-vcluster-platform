@@ -61,3 +61,4 @@ resource "null_resource" "wait_for_ingress_nginx" {
 
   depends_on = [helm_release.ingress_nginx]
 }
+
