@@ -1,45 +1,74 @@
 #!/bin/bash
-sudo apt-get update -y && sudo apt-get install docker.io jq -y
-curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64" && sudo install -c -m 0755 vcluster /usr/local/bin && rm -f vcluster
-sleep 5
-   echo    "----- ..................................................... -----"
-   echo     "----- ...............   TERRAFORM   .................... -----"
-   echo    "----- ..................................................... -----"
- if command -v terraform &> /dev/null
+set -e
+
+echo "Updating system..."
+sudo apt-get update -y
+
+echo "Installing base packages..."
+sudo apt-get install -y docker.io jq curl wget unzip
+
+# ------------------------------------------------
+# Install vCluster
+# ------------------------------------------------
+echo "Installing vCluster..."
+curl -L https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64 -o vcluster
+sudo install -c -m 0755 vcluster /usr/local/bin
+rm -f vcluster
+
+# ------------------------------------------------
+# Terraform
+# ------------------------------------------------
+echo "Checking Terraform..."
+if command -v terraform &> /dev/null
 then
-   echo "Terraform is installed on your system"
+    echo "Terraform already installed: $(terraform version | head -n1)"
 else
-   echo "Terraform is not installed on your system"
-   sudo wget https://releases.hashicorp.com/terraform/0.14.8/terraform_0.14.8_linux_amd64.zip
-   sudo apt install zip -y
-   sudo unzip terraform_0.14.8_linux_amd64.zip
-   sudo mv terraform /usr/local/bin/
+    echo "Installing Terraform..."
+    TERRAFORM_VERSION="1.10"
+
+    wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+    sudo mv terraform /usr/local/bin/
+    rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 fi
-   sleep 5
-   echo    "----- ..................................................... -----"
-   echo        "----- ...............   HELM   .................... -----"
-   echo    "----- ..................................................... -----"
-   if command -v helm &> /dev/null
+
+# ------------------------------------------------
+# Helm
+# ------------------------------------------------
+echo "Checking Helm..."
+if command -v helm &> /dev/null
 then
-   echo "Helm is installed on your system"
+    echo "Helm already installed: $(helm version --short)"
 else
-   echo "Helm is not installed on your system"
-   HELM_VERSION="v3.13.3"
-   sudo curl -# -LO "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz"
-   sudo tar -xzvf "helm-${HELM_VERSION}-linux-amd64.tar.gz"
-   sudo mv linux-amd64/helm /usr/local/bin/helm
-   sudo rm -rf "helm-${HELM_VERSION}-linux-amd64.tar.gz" && sudo rm -rf linux-amd64
-   sleep 5
+    echo "Installing Helm..."
+    HELM_VERSION="v3.13.3"
+
+    curl -LO https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz
+    tar -xzf helm-${HELM_VERSION}-linux-amd64.tar.gz
+
+    sudo mv linux-amd64/helm /usr/local/bin/helm
+    rm -rf linux-amd64 helm-${HELM_VERSION}-linux-amd64.tar.gz
 fi
-   echo    "----- ..................................................... -----"
-   echo       "----- ...............   KUBECTL   .................... -----"
-   echo    "----- ..................................................... -----"
+
+# ------------------------------------------------
+# kubectl
+# ------------------------------------------------
+echo "Checking kubectl..."
 if command -v kubectl &> /dev/null
 then
-   echo "kubectl is installed on your system"
+    echo "kubectl already installed: $(kubectl version --client --short)"
 else
-   echo "kubectl is not installed on your system"
-   sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-   sudo chmod +x ./kubectl
-   sudo mv ./kubectl /usr/local/bin/kubectl
+    echo "Installing kubectl..."
+    KUBECTL_VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
+
+    curl -LO https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl
+    chmod +x kubectl
+    sudo mv kubectl /usr/local/bin/
 fi
+
+            echo "------------------------------------------------"
+            echo              "Installation complete" 
+            echo "------------------------------------------------"
+
+
