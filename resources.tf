@@ -58,6 +58,4 @@ module "vclusters" {
   loft_user     = "admin"
   loft_password = "admin"
   loft_project = "Default Project"
-  kubeconfig_path = "~/.kube/config"
-
 }
