@@ -1,6 +1,6 @@
 admin:
   username: admin
-  password: fuko09phsurxho
+  password: admin
   
 config:
   audit:
