@@ -5,6 +5,9 @@ resource "helm_release" "vcluster" {
   chart            = "vcluster"
   namespace        = var.namespace
   create_namespace = true
+
+  wait    = true
+  timeout = 600
 }
 
 resource "null_resource" "register" {
