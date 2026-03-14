@@ -7,9 +7,10 @@ resource "helm_release" "vcluster" {
   create_namespace = true
 }
 
-
 resource "null_resource" "register" {
+
   provisioner "local-exec" {
+
     environment = {
       LOFT_HOST     = var.loft_host
       LOFT_USERNAME = var.loft_user
@@ -19,17 +20,19 @@ resource "null_resource" "register" {
 
     command = <<EOT
 set -e
-
-# Check if cluster is already registered
-if loft cluster get ${var.name} &> /dev/null; then
+echo "Checking cluster ${var.name} in Loft..."
+if loft cluster get ${var.name} --project "${var.loft_project}" &> /dev/null; then
   echo "Cluster ${var.name} already registered in Loft"
 else
-  echo "Registering cluster ${var.name} in Loft"
-  loft cluster add --name ${var.name} --namespace ${var.namespace} --project "Default Project"
+  echo "Registering cluster ${var.name} in Loft project ${var.loft_project}"
+
+  loft cluster add \
+    --name ${var.name} \
+    --namespace ${var.namespace} \
+    --project "${var.loft_project}"
 fi
 EOT
   }
 
   depends_on = [helm_release.vcluster]
 }
-
