@@ -15,6 +15,17 @@ curl -L https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-li
 sudo install -c -m 0755 vcluster /usr/local/bin
 rm -f vcluster
 
+sleep 5
+
+LATEST_URL=$(wget --no-check-certificate -qO- \
+  https://api.github.com/repos/loft-sh/loft/releases/latest \
+  | jq -r '.assets[] | select(.name | test("linux_amd64")) | .browser_download_url')
+
+wget --no-check-certificate -O loft-linux-amd64.tar.gz "$LATEST_URL"
+tar -xzf loft-linux-amd64.tar.gz
+chmod +x loft
+sudo mv loft /usr/local/bin/loft
+
 # ------------------------------------------------
 # Terraform
 # ------------------------------------------------
