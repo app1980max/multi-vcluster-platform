@@ -23,24 +23,9 @@ module "nginx" {
   depends_on = [module.metallb]
 }
 
-module "argo" {
-  source = "./modules/argo"
-  depends_on = [module.nginx]
-}
-
-module "argo-events" {
-  source = "./modules/argo-events"
-  depends_on = [module.argo]
-}
-
-module "minio" {
-  source = "./modules/minio"
-  depends_on = [module.argo-events]
-}
-
 module "vcluster-platform" {
   source = "./modules/vcluster-platform"
-  depends_on = [module.minio]
+  depends_on = [module.nginx]
 }
 
 module "vclusters" {
@@ -53,7 +38,6 @@ module "vclusters" {
 
   name      = "vcluster-${each.key}"
   namespace = "vcluster-${each.key}"
-
 }
 
 
