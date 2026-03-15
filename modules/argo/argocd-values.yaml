@@ -1,16 +1,21 @@
-
 crds:
-  install: true   # install CRDs with the chart
-  keep: false     # remove CRDs on helm uninstall
-  
+  install: true
+  keep: true
+
 server:
   service:
-    type: ClusterIP  # or NodePort/ClusterIP as needed
+    type: ClusterIP
+
   extraArgs:
-    - --insecure  # only for development
+    - --insecure
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hostname: argo-dev.appflex.io
+
+    tls: true
 
 configs:
   secret:
-    argocdServerAdminPassword: "$2a$10$lgcvwdvggWeLl1AN14NWsePcWQczWHRQH2eiUNL9w/gN6NaelDl.G"  # Optional password override
-    
-
+    argocdServerAdminPassword: "$2a$10$lgcvwdvggWeLl1AN14NWsePcWQczWHRQH2eiUNL9w/gN6NaelDl.G"
