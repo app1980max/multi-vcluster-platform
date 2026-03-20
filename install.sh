@@ -6,7 +6,7 @@ cat <<EOF
 Typical installation of the Local Environment based on Kubernetes
     1. ### Install Packages
     2. ### Create Kubernetes Cluster
-    3. ### Deploy Helm Charts 
+    3. ### Deploy Vcluster Platform
     
 EOF
 sleep 5
@@ -27,12 +27,12 @@ terraform apply -var-file="template.tfvars" -auto-approve
 sleep 10 && kubectl get pods -A 
 
              echo      "----- ............................. -----"
-             echo          "---  CREATE INGRESS RULES  ---"
+             echo          "---  TERRAFORM-STATE-LIST  ---"
              echo      "----- ............................. -----"
 
 sleep 5 &&
-kubectl apply -f ./${path_folder}/ingress-app.yaml     
-terraform providers && kubectl get ing -A
+#kubectl apply -f ./${path_folder}/ingress-app.yaml     
+terraform state list  && kubectl get ing -A
                printf "\nWaiting for application will be ready... \n"
 printf "\nYou should see 'dashboard' as a reponse below (if you do the ingress is working):\n"
 
