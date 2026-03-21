@@ -4,7 +4,7 @@ metadata:
   name: developer1
   namespace: default
   labels:
-    owner: developer1
+    owner: admin
 spec:
   templateRef:
     name: default
