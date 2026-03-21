@@ -1,13 +1,13 @@
 apiVersion: management.loft.sh/v1
 kind: VirtualClusterInstance
 metadata:
-  name: cluster-03
-  namespace: loft-cluster-03
+  name: developer1
+  namespace: loft-developer1   # must match the namespace you want
   labels:
     owner: admin
 spec:
   templateRef:
-    name: default
+    name: default             # must exist in Loft
     namespace: default
   parameters:
     values: |
