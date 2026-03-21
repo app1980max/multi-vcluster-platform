@@ -12,7 +12,7 @@ sleep 5
              echo           "--- INSTALL DEPENDENCIES ---"
              echo      "----- ............................. -----"
              
-source packages/install.sh
+source modules/packages/install.sh
 sleep 5 
 sudo docker ps -a || true
 
