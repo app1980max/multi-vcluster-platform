@@ -24,7 +24,8 @@ sudo docker ps -a || true
 sleep 5         
 terraform init || { echo "Terraform init failed"; exit 1; }
 terraform validate || exit 1 
-terraform apply -var-file="template.tfvars" -auto-approve
+TF_VARS_FILE=${TF_VARS_FILE:-template.tfvars}
+terraform apply -var-file="$TF_VARS_FILE" -auto-approve
 sleep 10 && kubectl get pods -A 
 
              echo      "----- ............................. -----"
