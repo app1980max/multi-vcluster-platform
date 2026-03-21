@@ -1,8 +1,8 @@
 apiVersion: management.loft.sh/v1
 kind: VirtualClusterInstance
 metadata:
-  name: developer1
-  namespace: default
+  name: cluster-03
+  namespace: loft-cluster-03
   labels:
     owner: admin
 spec:
