@@ -12,9 +12,9 @@ spec:
   parameters:
     values: |
       syncer:
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
+        resources: {}
+          #limits:
+          #  cpu: "500m"
+          #  memory: "512Mi"
       ingress:
         enabled: false
