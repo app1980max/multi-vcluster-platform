@@ -14,14 +14,15 @@ sleep 5
              echo           "--- INSTALL DEPENDENCIES ---"
              echo      "----- ............................. -----"
              
-source config/dependency.sh
-sleep 5 && sudo docker ps -a || true
+source packages/dependency.sh
+sleep 5 
+sudo docker ps -a || true
 
              echo      "----- ............................. -----"
              echo           "---  LOAD-TERRAFORM-FILES  ---"
              echo      "----- ............................. -----"
 sleep 5         
-terraform init || exit 1
+terraform init || { echo "Terraform init failed"; exit 1; }
 terraform validate || exit 1 
 terraform apply -var-file="template.tfvars" -auto-approve
 sleep 10 && kubectl get pods -A 
@@ -30,7 +31,7 @@ sleep 10 && kubectl get pods -A
              echo          "---  TERRAFORM-STATE-LIST  ---"
              echo      "----- ............................. -----"
 
-sleep 5 &&
+sleep 5
 #kubectl apply -f ./${path_folder}/ingress-app.yaml     
 terraform state list  && kubectl get ing -A
                printf "\nWaiting for application will be ready... \n"
