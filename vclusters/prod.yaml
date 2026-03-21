@@ -1,10 +1,10 @@
 apiVersion: management.loft.sh/v1
 kind: VirtualClusterInstance
 metadata:
-  name: {{name}} # replace with developer/team name
+  name: developer1
   namespace: default
   labels:
-    owner: {{name}}
+    owner: developer1
 spec:
   templateRef:
     name: default
@@ -12,9 +12,9 @@ spec:
   parameters:
     values: |
       syncer:
-        resources: {}
-          #limits:
-          #  cpu: "500m"
-          #  memory: "512Mi"
+        resources:
+          # limits:
+          #   cpu: "500m"
+          #   memory: "512Mi"
       ingress:
         enabled: true
