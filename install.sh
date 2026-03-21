@@ -2,12 +2,10 @@
 
 set -e
 cat <<EOF
-
 Typical installation of the Local Environment based on Kubernetes
     1. ### Install Packages
     2. ### Create Kubernetes Cluster
-    3. ### Deploy VCluster Platform
-    
+    3. ### Deploy VCluster Platform   
 EOF
 sleep 5
              echo      "----- ............................. -----"
