@@ -1,12 +1,11 @@
+<img width="1048" height="642" alt="image" src="https://github.com/user-attachments/assets/065c0119-a28f-485d-a4a3-4b5a07db0262" />
 
-<img width="1182" height="724" alt="image" src="https://github.com/user-attachments/assets/21b0b407-6ccd-4e85-a131-9de2466f4c83" />
 
-
-## vCluster Platform | Development
+## vCluster Platform | Multiple Virtual Clusters
 vCluster is an open source solution that enables teams to run virtual Kubernetes clusters inside existing infrastructure. It helps platform engineers create secure, isolated environments for development, testing, CI/CD, and even production workloads, without the cost or overhead of managing separate physical clusters.
 
 
-🚀 It’s especially helpful for:
+🧠 Core Idea:
 ```
 ✅ Run multiple virtual clusters (vClusters) inside one real cluster
 ✅ Each team/user gets their own isolated environment
@@ -24,7 +23,7 @@ vCluster is an open source solution that enables teams to run virtual Kubernetes
 ```
 
 
-🧩 Deployment Options
+🚀 Deployment Options
 ```
 terraform init
 terraform validate
