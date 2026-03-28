@@ -34,4 +34,9 @@ terraform apply -var-file="template.tfvars" -auto-approve
 
 
 
+🏗️ How to connect:
+```
+vcluster connect vcluster-dev -n vcluster-dev
+vcluster connect vcluster-dev -n vcluster-test
+```
 
