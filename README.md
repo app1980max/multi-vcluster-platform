@@ -2,29 +2,29 @@
 <img width="1182" height="724" alt="image" src="https://github.com/user-attachments/assets/21b0b407-6ccd-4e85-a131-9de2466f4c83" />
 
 
-## vCluster Platform | Development 
+## vCluster Platform | Development
 vCluster is an open source solution that enables teams to run virtual Kubernetes clusters inside existing infrastructure. It helps platform engineers create secure, isolated environments for development, testing, CI/CD, and even production workloads, without the cost or overhead of managing separate physical clusters.
 
 
 🚀 It’s especially helpful for:
 ```
-✅ Developers who need a fast, disposable Kubernetes cluster on their laptop.
-✅ CI pipelines that run Kubernetes integration tests quickly without cloud infrastructure.
-✅ Testing multi-node setups or Kubernetes features (networking, scheduling, etc.) locally.
+✅ Run multiple virtual clusters (vClusters) inside one real cluster
+✅ Each team/user gets their own isolated environment
+✅ All managed from one platform UI/API
 ```
 
 
-🧱  Key Features
+🏗️ Key Components
 ```
-🐳 Runs entirely on Docker — no need for VM-based solutions like Minikube or K3s.
-⚡ Fast startup and teardown — clusters can be created or destroyed in seconds.
-🔁 Supports multi-node topologies — you can simulate real clusters easily.
-🧩 Compatible with standard Kubernetes tooling — kubectl, Helm, etc., work out of the box.
-🧪 Often used in CI/CD pipelines with tools like GitHub Actions and GitLab CI.
+1. Virtual Clusters
+2. Platform (Control Plane)
+3. Projects & Access Control
+4. Apps Layer
+5. Cost Optimization Features
 ```
 
 
-🏗️ Deployment Options
+🧩 Deployment Options
 ```
 terraform init
 terraform validate
