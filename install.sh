@@ -12,7 +12,7 @@ sleep 5
              echo           "--- INSTALL DEPENDENCIES ---"
              echo      "----- ............................. -----"
              
-source modules/packages/install.sh
+source modules/config/install.sh
 sleep 5 
 sudo docker ps -a || true
 
@@ -31,7 +31,6 @@ sleep 10 && kubectl get pods -A
              echo      "----- ............................. -----"
 
 sleep 5
-#kubectl apply -f ./${path_folder}/ingress-app.yaml     
 terraform state list  && kubectl get ing -A
                printf "\nWaiting for application will be ready... \n"
 printf "\nYou should see 'dashboard' as a reponse below (if you do the ingress is working):\n"
