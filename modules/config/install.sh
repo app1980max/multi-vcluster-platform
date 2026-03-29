@@ -35,7 +35,7 @@ then
     echo "Terraform already installed: $(terraform version | head -n1)"
 else
     echo "Installing Terraform..."
-    TERRAFORM_VERSION="1.10"
+    TERRAFORM_VERSION="1.10.4"
 
     wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
