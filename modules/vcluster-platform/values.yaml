@@ -6,10 +6,27 @@
 admin:
   username: admin
   password: admin
+
 config:
   audit:
     enabled: false
   loftHost: vcluster-dev.appflex.io
+
+accessKeys:
+  - name: admin
+    key: "C1QY0GBytw4BqENKWzbTUwE4FI3lyFJEREz77N6DzSjRi90AhlxFEwjwy0lO5Wit"
+    user: admin
+    scope:
+      projects:
+        - default
+      resources:
+        - apiGroups:
+            - management.loft.sh
+          resources:
+            - "*"
+          verbs:
+            - "*"
+
 ingress:
   enabled: true
   host: vcluster-dev.appflex.io
@@ -21,10 +38,9 @@ features:
 
 projects:
   createDefault: true
-  
+
 virtualCluster:
   enabled: true
-
   defaults:
     sync:
       nodes:
@@ -33,6 +49,3 @@ virtualCluster:
         enabled: true
       ingresses:
         enabled: true
-
-
-        
