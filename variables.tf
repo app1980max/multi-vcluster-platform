@@ -25,5 +25,11 @@ variable "additional_control_planes_count" {
   default     = 2
 }
 
+variable "vclusters" {
+  description = "Mapping of vCluster logical names to internal identifiers"
+  type        = map(string)
+  default     = {}  # optional, can be empty
+}
+
 
 
