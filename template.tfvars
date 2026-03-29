@@ -6,5 +6,11 @@ k8s_version              = "v1.35.0"
 additional_control_planes_count = 0
 worker_count = 0
 
+# vClusters mapping: vCluster logical name -> internal identifier
+vclusters = {
+  dev = "dev"
+  prod = "prod"
+}
+
 
 
