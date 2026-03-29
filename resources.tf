@@ -46,10 +46,7 @@ module "vcluster-platform" {
 module "vclusters" {
   source = "./modules/vclusters"
   depends_on = [module.vcluster-platform]
-  for_each = {
-    dev  = "dev1"
-    qa   = "dev2"
-  }
+  for_each = var.vclusters
 
   name      = "vcluster-${each.key}"
   namespace = "vcluster-${each.key}"
