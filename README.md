@@ -38,6 +38,9 @@ terraform apply -var-file="template.tfvars" -auto-approve
 vcluster list
 vcluster connect vcluster-dev -n vcluster-dev
 vcluster connect vcluster-dev -n vcluster-test
+
 kubectl config get-contexts
+kubectl config use-context kind-dev-cluster
+kubectl config use-context vcluster_vcluster-dev_vcluster-dev_kind-dev-cluster
 ```
 
