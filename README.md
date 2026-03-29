@@ -39,6 +39,10 @@ vcluster list
 vcluster connect vcluster-dev -n vcluster-dev
 vcluster connect vcluster-dev -n vcluster-test
 
+vcluster login vcluster-dev.appflex.io --access-key KRpaVnXKSA9jGDE6mX43j3jhsjkhjskhjskhshjssk
+vcluster platform add vcluster vcluster-dev \
+--project=default 
+
 kubectl config get-contexts
 kubectl config use-context kind-dev-cluster
 kubectl config use-context vcluster_vcluster-dev_vcluster-dev_kind-dev-cluster
