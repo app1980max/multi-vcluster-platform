@@ -1,4 +1,5 @@
-<img width="1150" height="642" alt="image" src="https://github.com/user-attachments/assets/c076e233-7dfc-4d4e-b859-e7c739bca690" />
+<img width="1150" height="642" alt="image" src="https://github.com/user-attachments/assets/07cdda8a-a331-419e-83cc-6c42dfb977c9" />
+
 
 
 ## vCluster Platform | Multiple Virtual Clusters
