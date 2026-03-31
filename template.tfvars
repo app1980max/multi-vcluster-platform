@@ -9,7 +9,7 @@ worker_count = 0
 # vClusters mapping: vCluster logical name -> internal identifier
 vclusters = {
   dev = "dev"
-  prod = "prod"
+  qa  = "qa"
 }
 
 
