@@ -25,5 +25,10 @@ resource "helm_release" "vcluster_platform" {
     name  = "env.DISABLE_LOFT_ROUTER"
     value = "true"
   }
+  # Enable agents
+  set {
+    name  = "env.DISABLE_AGENT"
+    value = "false"
+  }
 }
 
