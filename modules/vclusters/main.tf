@@ -9,6 +9,9 @@ resource "helm_release" "vcluster" {
   wait    = true
   timeout = 600
 
+  # Use external values.yaml for all configuration
+  values = [file("${path.module}/vcluster-values.yaml")]
+
   # --- control plane ---
   set {
     name  = "controlPlane.coredns.embedded"
