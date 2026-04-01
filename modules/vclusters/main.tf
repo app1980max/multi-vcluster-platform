@@ -12,7 +12,7 @@ resource "helm_release" "vcluster" {
   # Use external values.yaml for all configuration
   values = [file("${path.module}/vcluster-values.yaml")]
 
-
+  # --- sync to host ---
   set {
     name  = "sync.toHost.ingresses.enabled"
     value = "true"
