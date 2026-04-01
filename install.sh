@@ -2,10 +2,10 @@
 
 set -e
 cat <<EOF
-Typical installation of the Local Environment based on Kubernetes
+Typical installation of the vCluster based on Kubernetes
     1. ### Install Packages
     2. ### Create Kubernetes Cluster
-    3. ### Deploy VCluster Platform   
+    3. ### Deploy vCluster Platform    
 EOF
 sleep 5
              echo      "----- ............................. -----"
@@ -29,7 +29,6 @@ sleep 10 && kubectl get pods -A
              echo      "----- ............................. -----"
              echo          "---  TERRAFORM-STATE-LIST  ---"
              echo      "----- ............................. -----"
-
 sleep 5
 terraform state list  && kubectl get ing -A
                printf "\nWaiting for application will be ready... \n"
@@ -38,7 +37,4 @@ printf "\nYou should see 'dashboard' as a reponse below (if you do the ingress i
              echo      "----- ............................. -----"
              echo           "---  CLUSTER IS READY  ---"
              echo      "----- ............................. -----"
-
-
-
-
+             
