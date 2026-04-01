@@ -10,7 +10,7 @@ resource "helm_release" "vcluster" {
   timeout = 600
 
   # Use external values.yaml for all configuration
-  values = [file("${path.module}/vcluster-values.yaml")]
+  # values = [file("${path.module}/vcluster-values.yaml")]
 
   # --- sync to host ---
   set {
