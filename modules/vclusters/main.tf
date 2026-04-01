@@ -12,24 +12,7 @@ resource "helm_release" "vcluster" {
   # Use external values.yaml for all configuration
   values = [file("${path.module}/vcluster-values.yaml")]
 
-  # --- control plane ---
-  set {
-    name  = "controlPlane.coredns.embedded"
-    value = "true"
-  }
 
-  # --- sync from host ---
-  set {
-    name  = "sync.fromHost.ingressClasses.enabled"
-    value = "true"
-  }
-
-  set {
-    name  = "sync.fromHost.nodes.enabled"
-    value = "true"
-  }
-
-  # --- sync to host ---
   set {
     name  = "sync.toHost.ingresses.enabled"
     value = "true"
@@ -39,4 +22,7 @@ resource "helm_release" "vcluster" {
     name  = "sync.toHost.services.enabled"
     value = "true"
   }
+
 }
+
+
