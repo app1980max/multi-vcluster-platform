@@ -45,11 +45,11 @@ module "vcluster-platform" {
 
 module "vclusters" {
   source = "./modules/vclusters"
-  depends_on = [module.vcluster-platform]
   for_each = var.vclusters
-
   name      = "vcluster-${each.key}"
   namespace = "vcluster-${each.key}"
-
+  depends_on = [module.vcluster-platform]
 }
+
+
 
